@@ -19,12 +19,10 @@
 		if (phone_numer == "" || phone_numer.length == 0) {
 			errorMsg = errorMsg + "Phone Number Cannot be Empty\n";
 		} else {
-			var phoneRe = /^[2-9]\d{2}[2-9]\d{2}\d{4}$/;
-			var digits = phone_numer.replace(/\D/g, "");
-			var validPhone = phoneRe.test(digits);
-			if (!validPhone) {
-				errorMsg = errorMsg + "Phone Number is invalid\n";
-			}
+			var validPhone = validatephonenumber(phone_numer);
+			//if (!validPhone) {
+			//	errorMsg = errorMsg + "Phone Number is invalid .\n";
+			//}
 		}
 
 		
@@ -108,9 +106,20 @@
 	    // Check the range of the day
 	    return day > 0 && day <= monthLength[month - 1];
 	};
+	
+	
+	function validatephonenumber(inputtxt) {
+		  var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+		  if(inputtxt.value.match(phoneno)) {
+		    return true;
+		  }
+		  else {
+		    return false;
+		  }
+		}
 </script>
 <body>
-        <form  name="registerform" method="post" action="LeanerRegister" onsubmit="return validateForm();">
+        <form  name="registerform" method="post" action="LearnerRegister" onsubmit="return validateForm();">
        
             <center>
             <table border="1" width="30%" cellpadding="5">
@@ -145,7 +154,7 @@
                         <td><input type="text" name="email" value="" /></td>
                     </tr>
                     <tr>
-                        <td>Email</td>
+                        <td>Address</td>
                         <td><input type="text" name="address" value="" /></td>
                     </tr>
                     <tr>

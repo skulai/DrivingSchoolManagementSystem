@@ -24,6 +24,8 @@ public class LoginServlet extends HttpServlet {
         try {
             Class.forName("com.mysql.jdbc.Driver");
           //creating connection with the database 
+            
+            
             Connection  con=DriverManager.getConnection
                        ("jdbc:mysql://localhost:3306/drivingschool","root","cisco123");
             PreparedStatement pst = con.prepareStatement("Select l_username,l_password from learner where l_username=?");

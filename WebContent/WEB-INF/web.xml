@@ -36,7 +36,7 @@
 		<url-pattern>/LeanerRegister</url-pattern>
 	</servlet-mapping> -->
 	<servlet-mapping>
-		<servlet-name>LearnerLogin</servlet-name>
+		<servlet-name>LearnerRegister</servlet-name>
 		<url-pattern>/LearnerRegister</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
