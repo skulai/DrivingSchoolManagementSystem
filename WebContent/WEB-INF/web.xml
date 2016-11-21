@@ -30,7 +30,7 @@
 		<servlet-name>loginServlet</servlet-name>
 		<servlet-class>com.dsms.servlet.LoginServlet</servlet-class>
 	</servlet>
-	<!-- 
+	<!--
 	<servlet-mapping>
 		<servlet-name>LeanerRegister</servlet-name>
 		<url-pattern>/LeanerRegister</url-pattern>
@@ -43,4 +43,40 @@
 		<servlet-name>loginServlet</servlet-name>
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
+
+<!-- Instructor part -->
+	<servlet>
+ 	 <description></description>
+ 	 <display-name>LoginController</display-name>
+ 	 <servlet-name>LoginController</servlet-name>
+ 	 <servlet-class>com.dsms.servlet.LoginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+ 	 <servlet-name>LoginController</servlet-name>
+ 	 <url-pattern>/LoginController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+ 	 <description></description>
+ 	 <display-name>RegistrationController</display-name>
+ 	 <servlet-name>RegistrationController</servlet-name>
+ 	 <servlet-class>com.dsms.servlet.RegistrationController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+ 	 <servlet-name>RegistrationController</servlet-name>
+ 	 <url-pattern>/RegistrationController</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+ 	 <description></description>
+ 	 <display-name>GradeController</display-name>
+ 	 <servlet-name>GradeController</servlet-name>
+ 	 <servlet-class>com.dsms.servlet.GradeController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+ 	 <servlet-name>GradeController</servlet-name>
+ 	 <url-pattern>/GradeController</url-pattern>
+  </servlet-mapping>
+
+
+
 </web-app>
