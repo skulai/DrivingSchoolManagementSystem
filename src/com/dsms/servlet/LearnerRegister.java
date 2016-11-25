@@ -35,15 +35,15 @@ public class LearnerRegister extends HttpServlet {
                      ("jdbc:mysql://localhost:3306/drivingschool","root","cisco123");
 
         PreparedStatement ps=con.prepareStatement
-                  ("insert into learner(l_name,l_contact,l_email_id,l_dob,l_gender,l_username,l_password) values(?,?,?,?,?,?,?,?)");
-        ps.setString(1, "PK"+ (new Random()).nextInt(10000));
-        ps.setString(2, name);
-        ps.setString(3, contact);
-        ps.setString(4, email);
-        ps.setDate(5, new Date(System.currentTimeMillis()));
-        ps.setString(6, gender);
-        ps.setString(7, username);
-        ps.setString(8, password);
+                  ("insert into learner(l_name,l_contact,l_email_id,l_dob,l_gender,l_username,l_password) "+" values(?,?,?,?,?,?,?)");
+        ps.setString(1, name);
+        ps.setString(2, contact);
+        ps.setString(3, email);
+        ps.setDate(4, new Date(System.currentTimeMillis()));
+        ps.setString(5, "F");
+        ps.setString(6, username);
+        ps.setString(7, password);
+        
         int i=ps.executeUpdate();
         
           if(i>0)
@@ -52,10 +52,14 @@ public class LearnerRegister extends HttpServlet {
           }
         
         }
-        catch(Exception se)
+        catch(SQLException se)
         {
             se.printStackTrace();
-        }
+            se.getSQLState();
+        } catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	
       }
   }
