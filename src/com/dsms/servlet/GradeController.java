@@ -45,6 +45,7 @@ public class GradeController extends HttpServlet {
 		    } else {
 		    	rd = request.getRequestDispatcher("/i_error.jsp");
 		    }
+		    //request.getSession().setAttribute(arg0, arg1);
 		    rd.forward(request, response);
 		    } catch(Exception e) {
 				System.out.println(e);

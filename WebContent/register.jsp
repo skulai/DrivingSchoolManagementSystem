@@ -5,6 +5,34 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registration</title>
     </head>
+    <style type="text/css">
+.blink_text {
+
+animation:1s blinker linear infinite;
+-webkit-animation:1s blinker linear infinite;
+-moz-animation:1s blinker linear infinite;
+
+ color: red;
+}
+
+@-moz-keyframes blinker {  
+ 0% { opacity: 1.0; }
+ 50% { opacity: 0.0; }
+ 100% { opacity: 1.0; }
+ }
+
+@-webkit-keyframes blinker {  
+ 0% { opacity: 1.0; }
+ 50% { opacity: 0.0; }
+ 100% { opacity: 1.0; }
+ }
+
+@keyframes blinker {  
+ 0% { opacity: 1.0; }
+ 50% { opacity: 0.0; }
+ 100% { opacity: 1.0; }
+ }
+ </style>
 <script type="text/javascript">
 	function validateForm() {
 		var errorMsg;
@@ -122,6 +150,18 @@
         <form  name="registerform" method="post" action="LearnerRegister" onsubmit="return validateForm();">
        
             <center>
+            	<%
+ 			String userExists = (String) request.getSession().getAttribute("userExists");
+ 			System.out.println(userExists);
+ 			if(userExists !=null && userExists.equals("true")) {
+ 			
+ 			%>
+ 			<br><br><br><br>
+ 			<span class="blink_text">UserName Already exists</span>
+ 			<%
+ 			}
+ 			
+ 			%>
             <table border="1" width="30%" cellpadding="5">
                 <thead>
                     <tr>
