@@ -30,8 +30,8 @@ public class GradeController extends HttpServlet {
 		    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/drivingschool","root","cisco123");
 		    Statement st = con.createStatement();
 		    ResultSet rs=st.executeQuery("select l_id from learner where l_name='"+student+"'");
-		    System.out.println(rs.next());
 		    Integer l_id = rs.getInt("l_id");
+		    RequestDispatcher rd = null;
 		    
 		    String query="UPDATE learner SET l_grade=? WHERE l_id=?";
 		    PreparedStatement statement = null;
@@ -41,10 +41,11 @@ public class GradeController extends HttpServlet {
 		   
 		    int i = statement.executeUpdate();
 		    if (i > 0) {
-		    	System.out.println("Update success");
+		    	rd = request.getRequestDispatcher("/i_grade.jsp");
 		    } else {
-		    	System.out.println("Update failed");
+		    	rd = request.getRequestDispatcher("/i_error.jsp");
 		    }
+		    rd.forward(request, response);
 		    } catch(Exception e) {
 				System.out.println(e);
 			}
