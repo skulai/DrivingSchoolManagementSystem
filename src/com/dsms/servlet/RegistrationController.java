@@ -31,7 +31,7 @@ public class RegistrationController extends HttpServlet {
 	    
 	    try{
 	    Class.forName("com.mysql.jdbc.Driver");
-	    Connection con = DriverManager.getConnection("jdbc:mysql://mydb.cf3yndxmarmx.us-west-2.rds.amazonaws.com:3306/cmpe138_Driving_School_Management_System","root","password");
+	    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/drivingschool","root","cisco123");
 	    Statement st = con.createStatement();
 	    int i = st.executeUpdate("insert into instructor(i_name, i_gender, i_username, i_password, i_course_choice)"+ "values ('" + name + "','" + gender + "','" + user + "','" + pwd + "','" + course + "')");
 	    if (i > 0) {

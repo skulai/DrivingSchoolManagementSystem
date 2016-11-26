@@ -27,7 +27,7 @@ public class GradeController extends HttpServlet {
 
 		try{
 		    Class.forName("com.mysql.jdbc.Driver");
-		    Connection con = DriverManager.getConnection("jdbc:mysql://mydb.cf3yndxmarmx.us-west-2.rds.amazonaws.com:3306/cmpe138_Driving_School_Management_System","root","password");
+		    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/drivingschool","root","cisco123");
 		    Statement st = con.createStatement();
 		    ResultSet rs=st.executeQuery("select l_id from learner where l_name='"+student+"'");
 		    System.out.println(rs.next());

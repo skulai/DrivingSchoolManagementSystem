@@ -15,8 +15,10 @@ Welcome ${requestScope['user'].username}.
     <sql:setDataSource
         var="myDS"
         driver="com.mysql.jdbc.Driver"
-        url="jdbc:mysql://mydb.cf3yndxmarmx.us-west-2.rds.amazonaws.com:3306/cmpe138_Driving_School_Management_System"
-        user="root" password="password"
+        url = "jdbc:mysql://localhost:3306/drivingschool"
+        user = "root"
+        password = "cisco123"
+       
     />
      
     <sql:query var="schedule"   dataSource="${myDS}">
@@ -83,13 +85,13 @@ Welcome ${requestScope['user'].username}.
         
         <label>Select Grade:</label>
         <select name="grade">
-        	<option>A</option>
-        	<option>B</option>
-        	<option>C</option>
-        	<option>D</option>
+        	<option>P</option>
+        	<option>F</option>
+        	<option>I</option>
         </select>
         <input type="submit" value="Change Grade">
         </form>
+        
         
     </div>
 </body>
