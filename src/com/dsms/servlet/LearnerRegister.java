@@ -59,7 +59,7 @@ public class LearnerRegister extends HttpServlet {
 			
 			DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
 			java.util.Date dob_date = df.parse(dob);
-			
+			java.sql.Date dob_sql = new Date(dob_date.getDate());
 
 	//creating connection with the database 
           Connection  con=DriverManager.getConnection
@@ -70,7 +70,7 @@ public class LearnerRegister extends HttpServlet {
         ps.setString(1, name);
         ps.setString(2, contact);
         ps.setString(3, email);
-        ps.setDate(4, new Date(System.currentTimeMillis()));
+        ps.setDate(4, dob_sql);
         if(gender!=null && gender.equalsIgnoreCase("female"))
         ps.setString(5, "F");
         else if(gender!=null && gender.equalsIgnoreCase("male"))
