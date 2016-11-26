@@ -150,7 +150,9 @@ animation:1s blinker linear infinite;
         <form  name="registerform" method="post" action="LearnerRegister" onsubmit="return validateForm();">
        
             <center>
+            <br><br>
             	<%
+            	
  			String userExists = (String) request.getSession().getAttribute("userExists");
  			System.out.println(userExists);
  			if(userExists !=null && userExists.equals("true")) {
@@ -160,7 +162,7 @@ animation:1s blinker linear infinite;
  			<span class="blink_text">UserName Already exists</span>
  			<%
  			}
- 			
+ 			request.getSession().removeAttribute("userExists");
  			%>
             <table border="1" width="30%" cellpadding="5">
                 <thead>
@@ -223,7 +225,7 @@ animation:1s blinker linear infinite;
                         <td><input type="reset" value="Reset" /></td>
                     </tr>
                     <tr>
-                        <td colspan="2">User name exists!! <a href="index.jsp">Login</a></td>
+                        <td colspan="2">Already have a user account ? <a href="index.jsp">Login</a></td>
                     </tr>
                 </tbody>
             </table>

@@ -37,10 +37,11 @@ public class LearnerRegister extends HttpServlet {
         String password = request.getParameter("password");
         
         RequestDispatcher rd = null;
-        
+        PreparedStatement ps = null;
+        Connection conn = null;
         try{
         //loading drivers for mysql
-        Class.forName("com.mysql.jdbc.Driver");
+      conn = ConnectionManager.getConnection();
         
         
         boolean userExists = checkIfUserIDExists(username);
@@ -62,10 +63,9 @@ public class LearnerRegister extends HttpServlet {
 			java.sql.Date dob_sql = new Date(dob_date.getDate());
 
 	//creating connection with the database 
-          Connection  con=DriverManager.getConnection
-                     ("jdbc:mysql://localhost:3306/cmpe138_Driving_School_Management_System","root","cisco123");
+         
 
-        PreparedStatement ps=con.prepareStatement
+        ps=conn.prepareStatement
                   ("insert into learner(l_name,l_contact,l_email_id,l_dob,l_gender,l_username,l_password) "+" values(?,?,?,?,?,?,?)");
         ps.setString(1, name);
         ps.setString(2, contact);
@@ -103,6 +103,27 @@ public class LearnerRegister extends HttpServlet {
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+		    // it is a good idea to release
+		    // resources in a finally{} block
+		    // in reverse-order of their creation
+		    // if they are no-longer needed
+
+		    if (ps != null) {
+		        try {
+		            ps.close();
+		        } catch (SQLException sqlEx) { } // ignore
+
+		        ps = null;
+		    }
+
+		    if (conn != null) {
+		        try {
+		            conn.close();
+		        } catch (SQLException sqlEx) { } // ignore
+
+		        conn = null;
+		    }
 		}
 	
       }

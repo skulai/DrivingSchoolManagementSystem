@@ -14,34 +14,27 @@
 	</welcome-file-list>
 
 	<display-name>Driving school management</display-name>
+	
 	<servlet>
 		<servlet-name>LearnerRegister</servlet-name>
 		<servlet-class>com.dsms.servlet.LearnerRegister</servlet-class>
-		<!-- <jsp-file>/register.jsp</jsp-file> -->
 	</servlet>
-	<servlet>
-		<servlet-name>LearnerLogin</servlet-name>
-		<servlet-class>com.dsms.servlet.LoginServlet</servlet-class>
-	</servlet>
-
-	<servlet>
-		<description>Login Servlet </description>
-		<display-name>System Login</display-name>
-		<servlet-name>loginServlet</servlet-name>
-		<servlet-class>com.dsms.servlet.LoginServlet</servlet-class>
-	</servlet>
-	<!--
-	<servlet-mapping>
-		<servlet-name>LeanerRegister</servlet-name>
-		<url-pattern>/LeanerRegister</url-pattern>
-	</servlet-mapping> -->
 	<servlet-mapping>
 		<servlet-name>LearnerRegister</servlet-name>
 		<url-pattern>/LearnerRegister</url-pattern>
 	</servlet-mapping>
+	
+
+	<servlet>
+		<description>Learner Login Servlet </description>
+		<display-name>System Login</display-name>
+		<servlet-name>learnerlogincontroller</servlet-name>
+		<servlet-class>com.dsms.servlet.LoginServlet</servlet-class>
+	</servlet>
+	
 	<servlet-mapping>
-		<servlet-name>loginServlet</servlet-name>
-		<url-pattern>/login</url-pattern>
+		<servlet-name>learnerlogincontroller</servlet-name>
+		<url-pattern>/learnerlogincontroller</url-pattern>
 	</servlet-mapping>
 
 <!-- Instructor part -->
