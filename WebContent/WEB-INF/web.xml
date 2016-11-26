@@ -14,7 +14,7 @@
 	</welcome-file-list>
 
 	<display-name>Driving school management</display-name>
-	
+
 	<servlet>
 		<servlet-name>LearnerRegister</servlet-name>
 		<servlet-class>com.dsms.servlet.LearnerRegister</servlet-class>
@@ -23,7 +23,7 @@
 		<servlet-name>LearnerRegister</servlet-name>
 		<url-pattern>/LearnerRegister</url-pattern>
 	</servlet-mapping>
-	
+
 
 	<servlet>
 		<description>Learner Login Servlet </description>
@@ -31,45 +31,70 @@
 		<servlet-name>learnerlogincontroller</servlet-name>
 		<servlet-class>com.dsms.servlet.LoginServlet</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>learnerlogincontroller</servlet-name>
 		<url-pattern>/learnerlogincontroller</url-pattern>
 	</servlet-mapping>
 
-<!-- Instructor part -->
+	<!-- Instructor part -->
 	<servlet>
- 	 <description></description>
- 	 <display-name>LoginController</display-name>
- 	 <servlet-name>LoginController</servlet-name>
- 	 <servlet-class>com.dsms.servlet.LoginController</servlet-class>
-  </servlet>
-  <servlet-mapping>
- 	 <servlet-name>LoginController</servlet-name>
- 	 <url-pattern>/LoginController</url-pattern>
-  </servlet-mapping>
-  <servlet>
- 	 <description></description>
- 	 <display-name>RegistrationController</display-name>
- 	 <servlet-name>RegistrationController</servlet-name>
- 	 <servlet-class>com.dsms.servlet.RegistrationController</servlet-class>
-  </servlet>
-  <servlet-mapping>
- 	 <servlet-name>RegistrationController</servlet-name>
- 	 <url-pattern>/RegistrationController</url-pattern>
-  </servlet-mapping>
+		<description></description>
+		<display-name>LoginController</display-name>
+		<servlet-name>LoginController</servlet-name>
+		<servlet-class>com.dsms.servlet.LoginController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginController</servlet-name>
+		<url-pattern>/LoginController</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>RegistrationController</display-name>
+		<servlet-name>RegistrationController</servlet-name>
+		<servlet-class>com.dsms.servlet.RegistrationController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegistrationController</servlet-name>
+		<url-pattern>/RegistrationController</url-pattern>
+	</servlet-mapping>
 
-  <servlet>
- 	 <description></description>
- 	 <display-name>GradeController</display-name>
- 	 <servlet-name>GradeController</servlet-name>
- 	 <servlet-class>com.dsms.servlet.GradeController</servlet-class>
-  </servlet>
-  <servlet-mapping>
- 	 <servlet-name>GradeController</servlet-name>
- 	 <url-pattern>/GradeController</url-pattern>
-  </servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>GradeController</display-name>
+		<servlet-name>GradeController</servlet-name>
+		<servlet-class>com.dsms.servlet.GradeController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GradeController</servlet-name>
+		<url-pattern>/GradeController</url-pattern>
+	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>learnerDashboardServlet</servlet-name>
+		<servlet-class>com.cmpe138.servlet.LearnerDashboardServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>learnerDashboardServlet</servlet-name>
+		<url-pattern>/learnerDashboard</url-pattern>
+	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>paymentDetailsServlet</servlet-name>
+		<servlet-class>com.cmpe138.servlet.PaymentDetailsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>paymentDetailsServlet</servlet-name>
+		<url-pattern>/paymentDetails</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>paymentServlet</servlet-name>
+		<servlet-class>com.cmpe138.servlet.PaymentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>paymentServlet</servlet-name>
+		<url-pattern>/payment</url-pattern>
+	</servlet-mapping>
 
 </web-app>
