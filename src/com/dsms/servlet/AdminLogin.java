@@ -23,7 +23,6 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class AdminLogin
  */
-@WebServlet(description = "Servlet for admin login", urlPatterns = { "/checkadminlogin" })
 public class AdminLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

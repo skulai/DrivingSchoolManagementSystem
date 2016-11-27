@@ -6,7 +6,7 @@ fba.controller('learStatCtrl', function($scope, $http) {
 
 
 	$scope.actlear = function() {
-		alert("SSS"+arguments[0]);
+		//alert("SSS"+arguments[0]);
 		document.getElementById(arguments[0]).style.display = "block";
 		document.getElementById('button_'+arguments[0]).style.display = "none";
 		

@@ -23,7 +23,6 @@ import org.json.simple.parser.ParseException;
 /**
  * Servlet implementation class ActivateLearner
  */
-@WebServlet("/activatelearners")
 public class ActivateLearner extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

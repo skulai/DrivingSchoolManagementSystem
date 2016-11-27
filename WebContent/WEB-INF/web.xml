@@ -96,5 +96,49 @@
 		<servlet-name>paymentServlet</servlet-name>
 		<url-pattern>/payment</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<description></description>
+		<display-name>AdminConsole</display-name>
+		<servlet-name>AdminConsole</servlet-name>
+		<servlet-class>com.dsms.servlet.AdminConsole</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminConsole</servlet-name>
+		<url-pattern>/admin</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<description></description>
+		<display-name>AdminLogin</display-name>
+		<servlet-name>AdminLogin</servlet-name>
+		<servlet-class>com.dsms.servlet.AdminLogin</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminLogin</servlet-name>
+		<url-pattern>/checkadminlogin</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<description></description>
+		<display-name>AdminHomepage</display-name>
+		<servlet-name>AdminHomepage</servlet-name>
+		<servlet-class>com.dsms.servlet.AdminHomepage</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminHomepage</servlet-name>
+		<url-pattern>/adminhomepage</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<description></description>
+		<display-name>ActivateLearner</display-name>
+		<servlet-name>ActivateLearner</servlet-name>
+		<servlet-class>com.dsms.servlet.ActivateLearner</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ActivateLearner</servlet-name>
+		<url-pattern>/activatelearners</url-pattern>
+	</servlet-mapping>
 
 </web-app>

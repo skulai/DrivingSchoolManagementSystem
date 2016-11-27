@@ -17,7 +17,6 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class AdminHomepage
  */
-@WebServlet("/adminhomepage")
 public class AdminHomepage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
