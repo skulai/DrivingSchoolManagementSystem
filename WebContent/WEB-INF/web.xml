@@ -140,5 +140,36 @@
 		<servlet-name>ActivateLearner</servlet-name>
 		<url-pattern>/activatelearners</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>PrepareSchedule</display-name>
+		<servlet-name>PrepareSchedule</servlet-name>
+		<servlet-class>com.dsms.servlet.SchedulePreparer</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PrepareSchedule</servlet-name>
+		<url-pattern>/prepareSchedule</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>AddOffers</display-name>
+		<servlet-name>AddOffers</servlet-name>
+		<servlet-class>com.dsms.servlet.AddOffers</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddOffers</servlet-name>
+		<url-pattern>/addOffer</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>ViewLearnerCourses</display-name>
+		<servlet-name>ViewLearnerCourses</servlet-name>
+		<servlet-class>com.dsms.servlet.AdminDashboard</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ViewLearnerCourses</servlet-name>
+		<url-pattern>/getLearnerCourse</url-pattern>
+	</servlet-mapping>
+	
 
 </web-app>

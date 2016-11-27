@@ -48,7 +48,7 @@ public class AdminHomepage extends HttpServlet {
 				Connection con;
 				try {
 					con = DriverManager.getConnection
-							("jdbc:mysql://localhost:3306/cmpe138_Driving_School_Management_System","root","qwerty");
+							("jdbc:mysql://localhost:3306/cmpe138_Driving_School_Management_System","root","****");
 					PreparedStatement pst2;
 					pst2 = con.prepareStatement("Select * from learner");
 					ResultSet rs2 = pst2.executeQuery();
