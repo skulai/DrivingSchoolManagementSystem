@@ -9,8 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import sun.text.normalizer.ICUBinary.Authenticate;
  
 public class GradeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -29,7 +27,10 @@ public class GradeController extends HttpServlet {
 			Connection con = ConnectionManager.getConnection();
 		    Statement st = con.createStatement();
 		    ResultSet rs=st.executeQuery("select l_id from learner where l_name='"+student+"'");
-		    Integer l_id = rs.getInt("l_id");
+		    Integer l_id = 0;
+		    if(rs.next()){
+		    	l_id = rs.getInt("l_id");
+		    }
 		    RequestDispatcher rd = null;
 		    
 		    String query="UPDATE learner SET l_grade=? WHERE l_id=?";

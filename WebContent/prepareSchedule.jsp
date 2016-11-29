@@ -39,7 +39,7 @@ animation:1s blinker linear infinite;
 <sql:setDataSource
         var="myDS"
         driver="com.mysql.jdbc.Driver"
-        url = "jdbc:mysql://localhost:3306/drivingschool"
+        url = "jdbc:mysql://localhost:3306/cmpe138_Driving_School_Management_System"
         user = "root"
         password = "qwerty"
        
