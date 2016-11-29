@@ -30,7 +30,7 @@ public class LoginController extends HttpServlet {
 		if (result.equals("failure")) {
 			rd = request.getRequestDispatcher("/i_error.jsp");
 		} else {
-			rd = request.getRequestDispatcher("/instructorDashboard.jsp");
+			rd = request.getRequestDispatcher("/LearnerDashboard.jsp");
 			String userId = result;
 			User user = new User(username, password, userId);
 			request.setAttribute("user", user);

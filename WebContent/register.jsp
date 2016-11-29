@@ -35,8 +35,8 @@ animation:1s blinker linear infinite;
  </style>
 <script type="text/javascript">
 	function validateForm() {
-		var errorMsg;
-		alert(1);
+		var errorMsg="";
+		
 		var x = document.forms["registerform"]["l_name"].value;
 		if (x == "" || x.length == 0) {
 			errorMsg = "Name cannot be empty \n";
@@ -68,7 +68,7 @@ animation:1s blinker linear infinite;
 			}
 		
 			var form_dob = document.forms["registerform"]["dob"].value;
-			alert(form_dob);
+			//alert(form_dob);
 			var valid_date = isValidDate(form_dob);
 			if(!valid_date) {
 				errorMsg = errorMsg + "Please enter a valid DOB in mm/dd/yyyy format \n";
@@ -78,9 +78,9 @@ animation:1s blinker linear infinite;
 				    var day = parseInt(parts[1], 10);
 				    var month = parseInt(parts[0], 10);
 				    var year = parseInt(parts[2], 10);
-				    alert(year);
+				    //alert(year);
 				    var currentyear = new Date().getFullYear();
-				    alert(currentyear);
+				    //alert(currentyear);
 				    if(currentyear - year < 18) {
 				    	errorMsg = errorMsg + "You should be atleast 18 years to register as a learner \n";
 				    }
@@ -138,7 +138,8 @@ animation:1s blinker linear infinite;
 	
 	function validatephonenumber(inputtxt) {
 		  var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-		  if(inputtxt.value.match(phoneno)) {
+		  
+		  if(inputtxt.match(phoneno)) {
 		    return true;
 		  }
 		  else {
@@ -151,12 +152,10 @@ animation:1s blinker linear infinite;
        
             <center>
             <br><br>
-            	<%
-            	
- 			String userExists = (String) request.getSession().getAttribute("userExists");
+            <%
+            String userExists = (String) request.getSession().getAttribute("userExists");
  			System.out.println(userExists);
  			if(userExists !=null && userExists.equals("true")) {
- 			
  			%>
  			<br><br><br><br>
  			<span class="blink_text">UserName Already exists</span>
@@ -167,11 +166,11 @@ animation:1s blinker linear infinite;
             <table border="1" width="30%" cellpadding="5">
                 <thead>
                     <tr>
-                        <th colspan="2">Enter Information Here</th>
+                        <th colspan="2">Enter Learner Information Here</th>
                     </tr>
                 </thead>
                 <tbody>
-                 <tr>
+              <!--    <tr>
                  <td colspan="2" > 
                   <INPUT TYPE="radio" name="user_type" VALUE="Learner" CHECKED> Learner
          		   <BR>
@@ -180,7 +179,7 @@ animation:1s blinker linear infinite;
                  
                  </td>
                       
-                    </tr>
+                    </tr> -->
                     
                     <tr>
                         <td>Name</td>
@@ -221,8 +220,8 @@ animation:1s blinker linear infinite;
                         <td><input type="password" name="password" value="" /></td>
                     </tr>
                     <tr>
-                        <td><input type="submit" value="Submit"/></td>
-                        <td><input type="reset" value="Reset" /></td>
+                        <td colspan="2"><input type="submit" value="Submit"/></td>
+                      
                     </tr>
                     <tr>
                         <td colspan="2">Already have a user account ? <a href="index.jsp">Login</a></td>
