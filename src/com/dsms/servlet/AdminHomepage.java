@@ -47,16 +47,19 @@ public class AdminHomepage extends HttpServlet {
 
 				Connection con;
 				try {
-					con = DriverManager.getConnection
-							("jdbc:mysql://localhost:3306/cmpe138_Driving_School_Management_System","root","****");
+					con = ConnectionManager.getConnection();
 					PreparedStatement pst2;
 					pst2 = con.prepareStatement("Select * from learner");
 					ResultSet rs2 = pst2.executeQuery();
 					session.setAttribute("users", rs2);
-					response.setContentType("application/json");
-					request.getRequestDispatcher("/adminHomePage.jsp").forward(request, response);
+					//response.setContentType("application/json");
+					System.out.println("Going to AdminHomepage");
+					request.getRequestDispatcher("/adminhp.jsp").forward(request, response);
 					con.close();
 				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}

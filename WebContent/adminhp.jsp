@@ -73,7 +73,7 @@
 					<td><%= rs.getString("l_name") %></td>
 					<td><%= rs.getString("l_dob")  %></td>
 					<td><%= rs.getString("l_email_id")  %></td> 
-					<%if (rs.getString("l_status").equals("enr")) { %>
+					<%if (rs.getString("l_status").equals("P")) { %>
 					<td>
 					<div id="<%= rs.getString(1) %>"  style="display:none;" class="answer_list" > Activated</div>
 					<button ng-click="actlear(<%= rs.getString(1) %>);"

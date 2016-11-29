@@ -4,7 +4,6 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.sql.*;
-import java.util.Random;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -66,7 +65,7 @@ public class LearnerRegister extends HttpServlet {
          
 
         ps=conn.prepareStatement
-                  ("insert into learner(l_name,l_contact,l_email_id,l_dob,l_gender,l_username,l_password) "+" values(?,?,?,?,?,?,?)");
+                  ("insert into learner(l_name,l_contact,l_email_id,l_dob,l_gender,l_username,l_password,l_status) "+" values(?,?,?,?,?,?,?,?)");
         ps.setString(1, name);
         ps.setString(2, contact);
         ps.setString(3, email);
@@ -77,6 +76,7 @@ public class LearnerRegister extends HttpServlet {
         	ps.setString(5, "M");	
         ps.setString(6, username);
         ps.setString(7, password);
+        ps.setString(8, "P");
         
         int i=ps.executeUpdate();
         
@@ -138,8 +138,7 @@ public class LearnerRegister extends HttpServlet {
 		  Integer db_count = -1;
 		try {
 			
-			conn = DriverManager.getConnection
-	                  ("jdbc:mysql://localhost:3306/cmpe138_Driving_School_Management_System","root","cisco123");
+			Connection con = ConnectionManager.getConnection();
 		    stmt = conn.createStatement();
 		    rs = stmt.executeQuery("select count(*) as count from learner where l_username='"+userId+"'");
 
@@ -164,6 +163,9 @@ public class LearnerRegister extends HttpServlet {
 		    System.out.println("SQLException: " + ex.getMessage());
 		    System.out.println("SQLState: " + ex.getSQLState());
 		    System.out.println("VendorError: " + ex.getErrorCode());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally {
 		    // it is a good idea to release

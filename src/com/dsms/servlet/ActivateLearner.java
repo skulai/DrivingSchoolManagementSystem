@@ -68,8 +68,7 @@ public class ActivateLearner extends HttpServlet {
 				//creating connection with the database 
 
 
-				Connection  con=DriverManager.getConnection
-						("jdbc:mysql://localhost:3306/cmpe138_Driving_School_Management_System","root","****");
+				Connection con = ConnectionManager.getConnection();
 				PreparedStatement pst = con.prepareStatement("Update learner set l_status=? where l_id=?");
 				//PreparedStatement pst = con.prepareStatement("Select * from admin");
 				pst.setString(1, "E");

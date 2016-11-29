@@ -1,178 +1,158 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-	id="WebApp_ID" version="3.1">
-	<display-name>DSMS</display-name>
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
-	</welcome-file-list>
-
-	<display-name>Driving school management</display-name>
-
-	<servlet>
-		<servlet-name>LearnerRegister</servlet-name>
-		<servlet-class>com.dsms.servlet.LearnerRegister</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>LearnerRegister</servlet-name>
-		<url-pattern>/LearnerRegister</url-pattern>
-	</servlet-mapping>
-
-
-	<servlet>
-		<description>Learner Login Servlet </description>
-		<display-name>System Login</display-name>
-		<servlet-name>learnerlogincontroller</servlet-name>
-		<servlet-class>com.dsms.servlet.LoginServlet</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>learnerlogincontroller</servlet-name>
-		<url-pattern>/learnerlogincontroller</url-pattern>
-	</servlet-mapping>
-
-	<!-- Instructor part -->
-	<servlet>
-		<description></description>
-		<display-name>LoginController</display-name>
-		<servlet-name>LoginController</servlet-name>
-		<servlet-class>com.dsms.servlet.LoginController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>LoginController</servlet-name>
-		<url-pattern>/LoginController</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<description></description>
-		<display-name>RegistrationController</display-name>
-		<servlet-name>RegistrationController</servlet-name>
-		<servlet-class>com.dsms.servlet.RegistrationController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>RegistrationController</servlet-name>
-		<url-pattern>/RegistrationController</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<description></description>
-		<display-name>GradeController</display-name>
-		<servlet-name>GradeController</servlet-name>
-		<servlet-class>com.dsms.servlet.GradeController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>GradeController</servlet-name>
-		<url-pattern>/GradeController</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>learnerDashboardServlet</servlet-name>
-		<servlet-class>com.dsms.servlet.LearnerDashboardServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>learnerDashboardServlet</servlet-name>
-		<url-pattern>/learnerDashboard</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>paymentDetailsServlet</servlet-name>
-		<servlet-class>com.dsms.servlet.PaymentDetailsServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>paymentDetailsServlet</servlet-name>
-		<url-pattern>/paymentDetails</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>paymentServlet</servlet-name>
-		<servlet-class>com.dsms.servlet.PaymentServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>paymentServlet</servlet-name>
-		<url-pattern>/payment</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<description></description>
-		<display-name>AdminConsole</display-name>
-		<servlet-name>AdminConsole</servlet-name>
-		<servlet-class>com.dsms.servlet.AdminConsole</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>AdminConsole</servlet-name>
-		<url-pattern>/admin</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<description></description>
-		<display-name>AdminLogin</display-name>
-		<servlet-name>AdminLogin</servlet-name>
-		<servlet-class>com.dsms.servlet.AdminLogin</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>AdminLogin</servlet-name>
-		<url-pattern>/checkadminlogin</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<description></description>
-		<display-name>AdminHomepage</display-name>
-		<servlet-name>AdminHomepage</servlet-name>
-		<servlet-class>com.dsms.servlet.AdminHomepage</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>AdminHomepage</servlet-name>
-		<url-pattern>/adminhomepage</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<description></description>
-		<display-name>ActivateLearner</display-name>
-		<servlet-name>ActivateLearner</servlet-name>
-		<servlet-class>com.dsms.servlet.ActivateLearner</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ActivateLearner</servlet-name>
-		<url-pattern>/activatelearners</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<description></description>
-		<display-name>PrepareSchedule</display-name>
-		<servlet-name>PrepareSchedule</servlet-name>
-		<servlet-class>com.dsms.servlet.SchedulePreparer</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>PrepareSchedule</servlet-name>
-		<url-pattern>/prepareSchedule</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<description></description>
-		<display-name>AddOffers</display-name>
-		<servlet-name>AddOffers</servlet-name>
-		<servlet-class>com.dsms.servlet.AddOffers</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>AddOffers</servlet-name>
-		<url-pattern>/addOffer</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<description></description>
-		<display-name>ViewLearnerCourses</display-name>
-		<servlet-name>ViewLearnerCourses</servlet-name>
-		<servlet-class>com.dsms.servlet.AdminDashboard</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ViewLearnerCourses</servlet-name>
-		<url-pattern>/getLearnerCourse</url-pattern>
-	</servlet-mapping>
-	
-	   <servlet>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>DSMS</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <display-name>Driving school management</display-name>
+  <servlet>
+    <servlet-name>LearnerRegister</servlet-name>
+    <servlet-class>com.dsms.servlet.LearnerRegister</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LearnerRegister</servlet-name>
+    <url-pattern>/LearnerRegister</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Learner Login Servlet </description>
+    <display-name>System Login</display-name>
+    <servlet-name>learnerlogincontroller</servlet-name>
+    <servlet-class>com.dsms.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>learnerlogincontroller</servlet-name>
+    <url-pattern>/learnerlogincontroller</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginController</display-name>
+    <servlet-name>LoginController</servlet-name>
+    <servlet-class>com.dsms.servlet.LoginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginController</servlet-name>
+    <url-pattern>/LoginController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RegistrationController</display-name>
+    <servlet-name>RegistrationController</servlet-name>
+    <servlet-class>com.dsms.servlet.RegistrationController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegistrationController</servlet-name>
+    <url-pattern>/RegistrationController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GradeController</display-name>
+    <servlet-name>GradeController</servlet-name>
+    <servlet-class>com.dsms.servlet.GradeController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GradeController</servlet-name>
+    <url-pattern>/GradeController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>learnerDashboardServlet</servlet-name>
+    <servlet-class>com.dsms.servlet.LearnerDashboardServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>learnerDashboardServlet</servlet-name>
+    <url-pattern>/learnerDashboard</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>paymentDetailsServlet</servlet-name>
+    <servlet-class>com.dsms.servlet.PaymentDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>paymentDetailsServlet</servlet-name>
+    <url-pattern>/paymentDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>paymentServlet</servlet-name>
+    <servlet-class>com.dsms.servlet.PaymentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>paymentServlet</servlet-name>
+    <url-pattern>/payment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminConsole</display-name>
+    <servlet-name>AdminConsole</servlet-name>
+    <servlet-class>com.dsms.servlet.AdminConsole</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminConsole</servlet-name>
+    <url-pattern>/admin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminLogin</display-name>
+    <servlet-name>AdminLogin</servlet-name>
+    <servlet-class>com.dsms.servlet.AdminLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminLogin</servlet-name>
+    <url-pattern>/checkadminlogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminHomepage</display-name>
+    <servlet-name>AdminHomepage</servlet-name>
+    <servlet-class>com.dsms.servlet.AdminHomepage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminHomepage</servlet-name>
+    <url-pattern>/adminhomepage</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ActivateLearner</display-name>
+    <servlet-name>ActivateLearner</servlet-name>
+    <servlet-class>com.dsms.servlet.ActivateLearner</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ActivateLearner</servlet-name>
+    <url-pattern>/activatelearners</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PrepareSchedule</display-name>
+    <servlet-name>PrepareSchedule</servlet-name>
+    <servlet-class>com.dsms.servlet.SchedulePreparer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PrepareSchedule</servlet-name>
+    <url-pattern>/prepareSchedule</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddOffers</display-name>
+    <servlet-name>AddOffers</servlet-name>
+    <servlet-class>com.dsms.servlet.AddOffers</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddOffers</servlet-name>
+    <url-pattern>/addOffer</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewLearnerCourses</display-name>
+    <servlet-name>ViewLearnerCourses</servlet-name>
+    <servlet-class>com.dsms.servlet.AdminDashboard</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewLearnerCourses</servlet-name>
+    <url-pattern>/getLearnerCourse</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <description></description>
     <display-name>InstructorFeedback</display-name>
     <servlet-name>Feedback</servlet-name>
@@ -182,6 +162,15 @@
     <servlet-name>Feedback</servlet-name>
     <url-pattern>/Feedback</url-pattern>
   </servlet-mapping>
-  </web-app>
-	
-
+  
+  <servlet>
+    <description></description>
+    <display-name>InstructorLoginController</display-name>
+    <servlet-name>InstructorLoginController</servlet-name>
+    <servlet-class>com.dsms.servlet.InstructorLoginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InstructorLoginController</servlet-name>
+    <url-pattern>/instructorLoginController</url-pattern>
+  </servlet-mapping>
+</web-app>

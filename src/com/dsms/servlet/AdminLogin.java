@@ -94,8 +94,7 @@ public class AdminLogin extends HttpServlet {
 				//creating connection with the database 
 
 
-				Connection  con=DriverManager.getConnection
-						("jdbc:mysql://localhost:3306/cmpe138_Driving_School_Management_System","root","****");
+				Connection con = ConnectionManager.getConnection();
 				PreparedStatement pst = con.prepareStatement("Select a_name,a_password from admin where a_name=? and a_password=?");
 				//PreparedStatement pst = con.prepareStatement("Select * from admin");
 				pst.setString(1, name);

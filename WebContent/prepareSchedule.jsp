@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %> 
 <!DOCTYPE html>
 <html>
     <head>
@@ -34,6 +35,20 @@ animation:1s blinker linear infinite;
  }
  </style>
 <body>
+
+<sql:setDataSource
+        var="myDS"
+        driver="com.mysql.jdbc.Driver"
+        url = "jdbc:mysql://localhost:3306/drivingschool"
+        user = "root"
+        password = "qwerty"
+       
+    />
+     
+    <sql:query var="instructor"   dataSource="${myDS}">
+        SELECT i_id, i_name, i_gender, i_course_choice FROM instructor i_status=?;
+    <sql:param value="U"/>
+    </sql:query>
         <form  name="scheduleform" method="post" action="prepareSchedule">
        
             <center>

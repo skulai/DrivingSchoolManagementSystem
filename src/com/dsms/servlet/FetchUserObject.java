@@ -13,13 +13,12 @@ public class FetchUserObject {
 
 		Statement stmt = null;
 		ResultSet rs = null;
-		  Connection  conn = null;
+		  //Connection  conn = null;
 		 
 		try {
 			
-			conn = DriverManager.getConnection
-	                  ("jdbc:mysql://localhost:3306/cmpe138_driving_school_management_system","root","root");
-		    stmt = conn.createStatement();
+			Connection con = ConnectionManager.getConnection();
+		    stmt = con.createStatement();
 		    rs = stmt.executeQuery("select * from learner where l_username='"+uname+"'");
 
 		    // or alternatively, if you don't know ahead of time that
@@ -42,6 +41,9 @@ public class FetchUserObject {
 		    System.out.println("SQLException: " + ex.getMessage());
 		    System.out.println("SQLState: " + ex.getSQLState());
 		    System.out.println("VendorError: " + ex.getErrorCode());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		finally {
 		    // it is a good idea to release

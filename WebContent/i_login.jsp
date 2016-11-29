@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h3>Instructor Login</h3>
-	<form action="LoginController" method="post">
+	<form action="instructorLoginController" method="post">
 		Enter username : <input type="text" name="username"> <BR>
 		Enter password : <input type="password" name="password"> <BR>
 		<input type="submit" />

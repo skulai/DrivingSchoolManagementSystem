@@ -37,9 +37,7 @@ public class Feedback extends HttpServlet {
         Connection conn = null;
         try{
         //loading drivers for mysql
-        	Class.forName("com.mysql.jdbc.Driver"); 
-      conn = DriverManager.getConnection
-              ("jdbc:mysql://localhost:3306/cmpe138_Driving_School_Management_System","root","cisco123");
+        	Connection con = ConnectionManager.getConnection();
         
        
 	//creating connection with the database 

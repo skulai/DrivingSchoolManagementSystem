@@ -8,8 +8,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import sun.text.normalizer.ICUBinary.Authenticate;
  
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
