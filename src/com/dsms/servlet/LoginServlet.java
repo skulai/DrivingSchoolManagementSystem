@@ -6,8 +6,15 @@ package com.dsms.servlet;
 
 import java.io.*;
 import javax.servlet.http.*;
+
+import com.dsms.entity.LearnerAvailableCoursesVO;
+import com.dsms.entity.LearnerCourseScheduleVO;
+import com.dsms.entity.OffersVO;
+import com.dsms.util.DatabaseOperations;
+
 import javax.servlet.*;
 import java.sql.*;
+import java.util.List;
 
 public class LoginServlet extends HttpServlet {
 
@@ -44,11 +51,7 @@ public class LoginServlet extends HttpServlet {
 			}
 
 			if (successFlag) {
-				request.setAttribute("user", userObject);
-				RequestDispatcher rd2 = request.getRequestDispatcher("/learnerDashboard.jsp");
-				rd2.forward(request, response);
-				return;
-
+				doGet(request, response);
 			} else {
 				rd = request.getRequestDispatcher("/index.jsp");
 				request.getSession().setAttribute("loginfailed", "true");
@@ -58,6 +61,37 @@ public class LoginServlet extends HttpServlet {
 				return;
 			}
 
+		}
+
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		try {
+			String username = request.getParameter("Username");
+			DatabaseOperations dboper = new DatabaseOperations();
+			int learnerId = dboper.getLearnerId(username);
+			
+			List<LearnerAvailableCoursesVO> courseList = dboper.getCourseDetails(learnerId);
+			List<LearnerCourseScheduleVO> courseSchedule = dboper.getCourseSchedule(learnerId);
+			List<OffersVO> offers = dboper.getOffers();
+			if(courseSchedule.size()==0)
+				request.setAttribute("courseList", courseList);
+			request.setAttribute("courseSchedule", courseSchedule);
+			request.setAttribute("offerList", offers);
+			
+
+			RequestDispatcher rd = request.getRequestDispatcher("learnerDashboard.jsp");
+			rd.forward(request, response);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
 	}

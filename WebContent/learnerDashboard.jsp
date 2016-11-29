@@ -10,7 +10,7 @@
 <body>
 	<h2 align="center">Learner User Dashboard</h2>
 	<h3 align="center">Available Courses</h3>
-	<form action="learnerDashboard" method="get">
+	<form action="learnerlogincontroller" method="get">
 		<table border="2" align="center" cellpadding="5" height="50px">
 			<c:forEach items="${courseList}" var="course">
 				<tr>
@@ -18,7 +18,9 @@
 					<td>${course.instructorName}</td>
 					<td>${course.startDate}</td>
 					<td>${course.courseDuration}</td>
+					<td>${course.endDate}</td>
 					<td>${course.courseFee}</td>
+					<td>${course.slot}</td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -33,10 +35,16 @@
 							<option value="${course}">${course.courseName}-${course.instructorName}-${course.startDate}</option>
 						</c:forEach>
 				</select></td>
+				<td>Please Select Offer:</td>
+				<td><select name="dropDown2">
+						<option value="select">--select--</option>
+						<c:forEach items="${offerList}" var="offer">
+							<option value="${offer}">${offer.offerValue}</option>
+						</c:forEach>
+				</select></td>
 			</tr>
 			<tr align="right">
-				<td align="right"><input type="submit" value="Pay Now!">
-				</td>
+				<td align="right" ><input type="submit" value="Pay Now!"></td>
 			</tr>
 		</table>
 	</form>
@@ -44,7 +52,7 @@
 	<br>
 	<br>
 	<h3 align="center">Your Current Schedule</h3>
-	<form action="learnerDashboard" method="get">
+	<form action="learnerlogincontroller" method="get">
 		<table border="2" align="center" cellpadding="5" height="50px">
 			<c:forEach items="${courseSchedule}" var="schedule">
 				<tr>
@@ -52,7 +60,7 @@
 					<td>${schedule.courseName}</td>
 					<td>${schedule.instructorName}</td>
 					<td>${schedule.startDate}</td>
-					<td>${schedule.courseDuration}</td>
+					<td>${schedule.endDate}</td>
 					<td>${schedule.scheduleTime}</td>
 				</tr>
 			</c:forEach>

@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import com.dsms.entity.InstructorVO;
 import com.dsms.entity.LearnerAvailableCoursesVO;
 import com.dsms.entity.LearnerCourseScheduleVO;
 import com.dsms.entity.LearnerPaymentDetailsVO;
+import com.dsms.entity.OffersVO;
 import com.dsms.entity.TransactionVO;
 
 /**
@@ -56,14 +58,14 @@ public class DatabaseOperations {
 		return instructorNames;
 	}
 
-	public List<LearnerAvailableCoursesVO> getCourseDetails() throws ClassNotFoundException, SQLException {
+	public List<LearnerAvailableCoursesVO> getCourseDetails(int learnerId) throws ClassNotFoundException, SQLException {
 		List<LearnerAvailableCoursesVO> coursesList = new ArrayList<>();
 		Connection dbConnection = createDbConnection();
 		Statement stmt = dbConnection.createStatement();
-		String query = "select c_name, i_name, c_duration, c_fees, s_start_date from courses join teaches on "
+		String query = "select c_name, i_name, c_duration, c_fees, s_start_date, s_time from courses join teaches on "
 				+ "courses.c_id = teaches.c_id join instructor on "
 				+ "teaches.i_id=instructor.i_id join schedule on courses.c_id=schedule.c_id "
-				+ "where courses.c_id not in (select c_id from learner where l_id=1 and l_status='enr'); ";
+				+ "where courses.c_id not in (select c_id from learner where l_id="+learnerId+" and l_status='enr'); ";
 		ResultSet result = stmt.executeQuery(query);
 		while (result.next()) {
 			LearnerAvailableCoursesVO course = new LearnerAvailableCoursesVO();
@@ -72,18 +74,21 @@ public class DatabaseOperations {
 			course.setStartDate(convertDatetoString(result.getDate("s_start_date")));
 			course.setCourseDuration(Integer.toString(result.getInt("c_duration")));
 			course.setCourseFee((result.getBigDecimal("c_fees")).toString());
+			course.setSlot(result.getString("s_time"));
+			String endDate = calucateEndDate(result.getDate("s_start_date"));
+			course.setEndDate(endDate);
 			coursesList.add(course);
 		}
 		return coursesList;
 	}
 
-	public List<LearnerCourseScheduleVO> getCourseSchedule() throws ClassNotFoundException, SQLException {
+	public List<LearnerCourseScheduleVO> getCourseSchedule(int learnerId) throws ClassNotFoundException, SQLException {
 		List<LearnerCourseScheduleVO> schedule = new ArrayList<>();
 		Connection dbConnection = createDbConnection();
 		Statement stmt = dbConnection.createStatement();
 		String query = "select courses.c_id, courses.c_name, i_name, s_start_date, courses.c_duration, s_time "
 				+ "from schedule join learner on schedule.s_id=learner.s_id join courses on schedule.c_id=courses.c_id "
-				+ "join instructor on schedule.i_id=instructor.i_id where l_id=1;";
+				+ "join instructor on schedule.i_id=instructor.i_id where l_id="+learnerId+";";
 		ResultSet result = stmt.executeQuery(query);
 		while (result.next()) {
 			LearnerCourseScheduleVO course = new LearnerCourseScheduleVO();
@@ -91,8 +96,9 @@ public class DatabaseOperations {
 			course.setCourseName(result.getString("c_name"));
 			course.setInstructorName(result.getString("i_name"));
 			course.setStartDate(convertDatetoString(result.getDate("s_start_date")));
-			course.setCourseDuration(Integer.toString(result.getInt("c_duration")));
 			course.setScheduleTime(result.getString("s_time"));
+			String endDate = calucateEndDate(result.getDate("s_start_date"));
+			course.setEndDate(endDate);
 			schedule.add(course);
 		}
 		return schedule;
@@ -161,7 +167,40 @@ public class DatabaseOperations {
 		return status;
 	}
 
+	public List<OffersVO> getOffers() throws ClassNotFoundException, SQLException {
+		List<OffersVO> offersList = new ArrayList<>();
+		Connection dbConnection = createDbConnection();
+		Statement stmt = dbConnection.createStatement();
+		String query = "select o_discount from offers where o_status='A';";
+		ResultSet result = stmt.executeQuery(query);
+		while (result.next()) {
+			OffersVO offers = new OffersVO();
+			offers.setOfferValue(result.getInt("o_discount"));
+			offersList.add(offers);
+		}
+		return offersList;
+	}
 
+	public int getLearnerId(String username) throws ClassNotFoundException, SQLException{
+		int learnerId = 0;
+		Connection dbConnection = createDbConnection();
+		Statement stmt = dbConnection.createStatement();
+		String query = "select l_id from learner where l_username="+"'"+username+"'"+";";
+		ResultSet result = stmt.executeQuery(query);
+		while (result.next()) {
+			learnerId = result.getInt("l_id");
+		}
+		return learnerId;
+	}
+	
+	private static String calucateEndDate(Date date){
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		c.add(Calendar.DATE,30);
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		String endDate = sdf.format(c.getTime());
+		return endDate;
+	}
 	private static String convertDatetoString(Date date) {
 		DateFormat dFormat = new SimpleDateFormat("MM/dd/yyyy");
 		return dFormat.format(date);

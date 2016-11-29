@@ -1,18 +1,21 @@
 
 package com.dsms.servlet;
-import javax.sql.*;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
  
 public class Authenticator {
  
 	public String authenticate(String username, String password) {
 	try{
 		Class.forName("com.mysql.jdbc.Driver"); 
-		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/drivingschool","root","cisco123");
+		java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cmpe138_driving_school_management_system","root","root");
 		Statement st= con.createStatement(); 
 		ResultSet rs=st.executeQuery("select * from instructor where i_username='"+username+"' and i_password ='"+password+"'"); 
 		if (rs.next()) {
-			return Integer.toString(rs.getInt("i_id"));
+			return Integer.toString(rs.getInt("l_id"));
 		} else {
 			return "failure";
 		}
@@ -31,11 +34,10 @@ public class Authenticator {
 		 con = ConnectionManager.getConnection();
 		 st= con.createStatement(); 
 		 rs=st.executeQuery("select * from learner where l_username='"+username+"' and l_password ='"+password+"'"); 
-		if (rs.next()) {
-			return rs.getInt("i_id");
-		} else {
-			return null;
+		while (rs.next()) {
+			return rs.getInt("l_id");
 		}
+		return null;
 	} catch(Exception e) {
 		System.out.println(e);
 		return null;

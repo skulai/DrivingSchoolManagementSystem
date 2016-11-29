@@ -14,6 +14,7 @@ public class LearnerCourseScheduleVO {
 	private String startDate;
 	private String courseDuration;
 	private String scheduleTime;
+	private String endDate;
 	public String getCourseId() {
 		return courseId;
 	}
@@ -49,5 +50,11 @@ public class LearnerCourseScheduleVO {
 	}
 	public void setScheduleTime(String scheduleTime) {
 		this.scheduleTime = scheduleTime;
+	}
+	public String getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
 	}
 }

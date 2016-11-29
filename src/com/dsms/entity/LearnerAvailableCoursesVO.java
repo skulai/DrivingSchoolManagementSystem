@@ -12,6 +12,8 @@ public class LearnerAvailableCoursesVO {
 	private String startDate;
 	private String courseDuration;
 	private String courseFee;
+	private String endDate;
+	private String slot;
 	public String getCourseName() {
 		return courseName;
 	}
@@ -41,6 +43,18 @@ public class LearnerAvailableCoursesVO {
 	}
 	public void setCourseFee(String courseFee) {
 		this.courseFee = courseFee;
+	}
+	public String getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+	public String getSlot() {
+		return slot;
+	}
+	public void setSlot(String slot) {
+		this.slot = slot;
 	}
 	@Override
 	public String toString() {

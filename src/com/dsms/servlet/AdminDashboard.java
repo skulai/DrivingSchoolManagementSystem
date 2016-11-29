@@ -34,8 +34,10 @@ public class AdminDashboard extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			DatabaseOperations dboper = new DatabaseOperations();			
-			List<LearnerCourseScheduleVO> courseSchedule = dboper.getCourseSchedule();
+			String username = request.getParameter("Username");
+			DatabaseOperations dboper = new DatabaseOperations();
+			int learnerId = dboper.getLearnerId(username);			
+			List<LearnerCourseScheduleVO> courseSchedule = dboper.getCourseSchedule(learnerId);
 			request.setAttribute("courseSchedule", courseSchedule);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("adminDashboard.jsp");

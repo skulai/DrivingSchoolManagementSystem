@@ -73,7 +73,7 @@
 
 	<servlet>
 		<servlet-name>learnerDashboardServlet</servlet-name>
-		<servlet-class>com.cmpe138.servlet.LearnerDashboardServlet</servlet-class>
+		<servlet-class>com.dsms.servlet.LearnerDashboardServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>learnerDashboardServlet</servlet-name>
@@ -82,7 +82,7 @@
 
 	<servlet>
 		<servlet-name>paymentDetailsServlet</servlet-name>
-		<servlet-class>com.cmpe138.servlet.PaymentDetailsServlet</servlet-class>
+		<servlet-class>com.dsms.servlet.PaymentDetailsServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>paymentDetailsServlet</servlet-name>
@@ -91,7 +91,7 @@
 
 	<servlet>
 		<servlet-name>paymentServlet</servlet-name>
-		<servlet-class>com.cmpe138.servlet.PaymentServlet</servlet-class>
+		<servlet-class>com.dsms.servlet.PaymentServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>paymentServlet</servlet-name>

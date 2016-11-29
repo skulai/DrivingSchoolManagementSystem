@@ -18,7 +18,7 @@ public class FetchUserObject {
 		try {
 			
 			conn = DriverManager.getConnection
-	                  ("jdbc:mysql://localhost:3306/cmpe138_Driving_School_Management_System","root","cisco123");
+	                  ("jdbc:mysql://localhost:3306/cmpe138_driving_school_management_system","root","root");
 		    stmt = conn.createStatement();
 		    rs = stmt.executeQuery("select * from learner where l_username='"+uname+"'");
 
