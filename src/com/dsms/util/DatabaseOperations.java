@@ -86,7 +86,7 @@ public class DatabaseOperations {
 		List<LearnerCourseScheduleVO> schedule = new ArrayList<>();
 		Connection dbConnection = createDbConnection();
 		Statement stmt = dbConnection.createStatement();
-		String query = "select courses.c_id, courses.c_name, i_name, s_start_date, courses.c_duration, s_time "
+		String query = "select courses.c_id, courses.c_name, i_name, s_start_date, courses.c_duration, s_time, l_grade "
 				+ "from schedule join learner on schedule.s_id=learner.s_id join courses on schedule.c_id=courses.c_id "
 				+ "join instructor on schedule.i_id=instructor.i_id where l_id="+learnerId+";";
 		ResultSet result = stmt.executeQuery(query);
@@ -99,6 +99,7 @@ public class DatabaseOperations {
 			course.setScheduleTime(result.getString("s_time"));
 			String endDate = calucateEndDate(result.getDate("s_start_date"));
 			course.setEndDate(endDate);
+			course.setGrade(result.getString("l_grade"));
 			schedule.add(course);
 		}
 		return schedule;

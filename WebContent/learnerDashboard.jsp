@@ -44,7 +44,7 @@
 				</select></td>
 			</tr>
 			<tr align="right">
-				<td align="right" ><input type="submit" value="Pay Now!"></td>
+				<td align="right"><input type="submit" value="Pay Now!"></td>
 			</tr>
 		</table>
 	</form>
@@ -65,6 +65,10 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<c:forEach items="${courseSchedule}" var="schedule">
+			<h3 align="center">Your Grade for the registered course is:
+				${schedule.grade}</h3>
+		</c:forEach>
 	</form>
 </body>
 </html>

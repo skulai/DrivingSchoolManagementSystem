@@ -76,11 +76,11 @@ public class LoginServlet extends HttpServlet {
 			List<LearnerAvailableCoursesVO> courseList = dboper.getCourseDetails(learnerId);
 			List<LearnerCourseScheduleVO> courseSchedule = dboper.getCourseSchedule(learnerId);
 			List<OffersVO> offers = dboper.getOffers();
-			if(courseSchedule.size()==0)
+			if(courseSchedule.size()==0){
 				request.setAttribute("courseList", courseList);
+				request.setAttribute("offerList", offers);
+			}
 			request.setAttribute("courseSchedule", courseSchedule);
-			request.setAttribute("offerList", offers);
-			
 
 			RequestDispatcher rd = request.getRequestDispatcher("learnerDashboard.jsp");
 			rd.forward(request, response);
