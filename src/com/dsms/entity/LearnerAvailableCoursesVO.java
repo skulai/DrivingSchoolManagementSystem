@@ -14,7 +14,7 @@ public class LearnerAvailableCoursesVO {
 	private String courseFee;
 	private String endDate;
 	private String slot;
-	private String grade;
+	private String rating;
 	public String getCourseName() {
 		return courseName;
 	}
@@ -57,11 +57,11 @@ public class LearnerAvailableCoursesVO {
 	public void setSlot(String slot) {
 		this.slot = slot;
 	}
-	public String getGrade() {
-		return grade;
+	public String getRating() {
+		return rating;
 	}
-	public void setGrade(String grade) {
-		this.grade = grade;
+	public void setRating(String rating) {
+		this.rating = rating;
 	}
 	@Override
 	public String toString() {

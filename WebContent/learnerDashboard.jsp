@@ -12,6 +12,16 @@
 	<h3 align="center">Available Courses</h3>
 	<form action="learnerlogincontroller" method="get">
 		<table border="2" align="center" cellpadding="5" height="50px">
+		<tr>
+			<td>Course</td>
+			<td>Instructor</td>
+			<td>Start Date</td>
+			<td>Duration (Month)</td>
+			<td>End Date</td>
+			<td>Fees</td>
+			<td>Scheduled Time</td>
+			<td>Rating</td>
+		</tr>
 			<c:forEach items="${courseList}" var="course">
 				<tr>
 					<td>${course.courseName}</td>
@@ -21,6 +31,7 @@
 					<td>${course.endDate}</td>
 					<td>${course.courseFee}</td>
 					<td>${course.slot}</td>
+					<td>${course.rating}</td>
 				</tr>
 			</c:forEach>
 		</table>

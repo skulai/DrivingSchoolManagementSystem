@@ -62,7 +62,7 @@ public class DatabaseOperations {
 		List<LearnerAvailableCoursesVO> coursesList = new ArrayList<>();
 		Connection dbConnection = createDbConnection();
 		Statement stmt = dbConnection.createStatement();
-		String query = "select c_name, i_name, c_duration, c_fees, s_start_date, s_time from courses join teaches on "
+		String query = "select c_name, instructor.i_id, i_name, c_duration, c_fees, s_start_date, s_time from courses join teaches on "
 				+ "courses.c_id = teaches.c_id join instructor on "
 				+ "teaches.i_id=instructor.i_id join schedule on courses.c_id=schedule.c_id "
 				+ "where courses.c_id not in (select c_id from learner where l_id="+learnerId+" and l_status='enr'); ";
@@ -77,6 +77,8 @@ public class DatabaseOperations {
 			course.setSlot(result.getString("s_time"));
 			String endDate = calucateEndDate(result.getDate("s_start_date"));
 			course.setEndDate(endDate);
+			float rating = getInstructorRating(result.getInt("i_id")); 
+			course.setRating(Float.toString(rating));
 			coursesList.add(course);
 		}
 		return coursesList;
@@ -172,7 +174,7 @@ public class DatabaseOperations {
 		List<OffersVO> offersList = new ArrayList<>();
 		Connection dbConnection = createDbConnection();
 		Statement stmt = dbConnection.createStatement();
-		String query = "select o_discount from offers where o_status='A';";
+		String query = "select o_discount from offers where is_active='A';";
 		ResultSet result = stmt.executeQuery(query);
 		while (result.next()) {
 			OffersVO offers = new OffersVO();
@@ -194,6 +196,17 @@ public class DatabaseOperations {
 		return learnerId;
 	}
 	
+	private static float getInstructorRating(int instructorId) throws ClassNotFoundException, SQLException{
+		float rating = 0;
+		Connection dbConnection = createDbConnection();
+		Statement stmt = dbConnection.createStatement();
+		String query = "select avg(rating) as rating from taught_by group by (i_id) having i_id="+instructorId+";";
+		ResultSet result = stmt.executeQuery(query);
+		while (result.next()) {
+			rating = result.getFloat("rating");
+		}
+		return rating;
+	}
 	private static String calucateEndDate(Date date){
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
