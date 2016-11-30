@@ -103,7 +103,7 @@
 		</table>
 		<h2><a href ="prepareSchedule.jsp"> Prepare Schedule for Courses</a></h2>
 		<h2><a href ="manageOffers.jsp">Add/Remove Offers</a></h2>
-		<h2><a href ="getLearnerCourse">View Learner Course Schedule</a></h2>
+		<!-- <h2><a href ="getLearnerCourse">View Learner Course Schedule</a></h2> -->
 	</div>	
 <script src="angularjs/admin_lear.js"></script>
 </body>

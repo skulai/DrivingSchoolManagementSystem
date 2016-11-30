@@ -12,9 +12,45 @@
 <script src="js/angular.js"></script>   
 </head>
 <body>
+<nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">DSMS</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a ref="#home" class="smoothScroll">Home</a></li>
+			</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+	</nav>
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 <div style="text-align: center">
-<h3>Welcome to Driving School Management System</h3>
-<a href="/admin"><button>Admin</button></a>
+<h1>Welcome to Driving School Management System</h1>
+<br>
+	<br>
+	<br>
+<a href="admin"><button>Admin</button></a>
 <a href="i_login.jsp"><button>Instructor</button></a>
 <a href="index.jsp"><button>Learner</button></a>
 </div>

@@ -48,7 +48,7 @@ public class Feedback extends HttpServlet {
 			if(i>0)
 			{
 				System.out.println("Thanks for your Feedback");
-				RequestDispatcher rd2 = request.getRequestDispatcher("/learnerDashboard.jsp");
+				RequestDispatcher rd2 = request.getRequestDispatcher("/index.jsp");
 				rd2.forward(request, response);
 				return;
 

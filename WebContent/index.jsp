@@ -85,7 +85,7 @@ animation:1s blinker linear infinite;
  			
  			%>
  			<br><br><br><br>
- 			<span class="blink_text">Login Failed. Please try again.</span> <br><br>
+ 			<span class="blink_text">Login Failed. Please try again or Please wait while admin approves.</span> <br><br>
  			<%
  			}
  			 request.getSession().removeAttribute("loginfailed");

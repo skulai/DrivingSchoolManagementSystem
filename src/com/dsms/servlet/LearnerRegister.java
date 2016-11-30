@@ -88,8 +88,9 @@ public class LearnerRegister extends HttpServlet {
             System.out.println("Thanks for your registration");
             User userobj = FetchUserObject.getUserObject(username);
             request.setAttribute("user", userobj);
-            RequestDispatcher rd2 = request.getRequestDispatcher("/instructorDashboard.jsp");
-            rd2.forward(request, response);
+            //RequestDispatcher rd2 = request.getRequestDispatcher("/instructorDashboard.jsp");
+            //rd2.forward(request, response);
+            response.getWriter().append("Registered Successfully. Please wait while admin approves.").append(request.getContextPath());
             return;
             
             

@@ -4,6 +4,7 @@
 package com.dsms.servlet;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -41,7 +42,9 @@ public class PaymentServlet extends HttpServlet {
 			paymentDetails.setEmail(request.getParameter("contactEmail"));
 			
 			TransactionVO transVo = new TransactionVO();
-			transVo.setTransactionId("Tx009");
+			String transId = UUID.randomUUID().toString();
+			transVo.setTransactionId(transId);
+			//transVo.setTransactionId("Tx009");
 			transVo.setLearnerId(UtilConstants.getLearnerId());
 			transVo.setTransactionStatus("Processing");
 			transVo.setCardNumber(cardLastFour);
