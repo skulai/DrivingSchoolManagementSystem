@@ -74,7 +74,6 @@ public class LoginServlet extends HttpServlet {
 			String username = request.getParameter("Username");
 			DatabaseOperations dboper = new DatabaseOperations();
 			int learnerId = dboper.getLearnerId(username);
-			
 			List<LearnerAvailableCoursesVO> courseList = dboper.getCourseDetails(learnerId);
 			List<LearnerCourseScheduleVO> courseSchedule = dboper.getCourseSchedule(learnerId);
 			List<OffersVO> offers = dboper.getOffers();

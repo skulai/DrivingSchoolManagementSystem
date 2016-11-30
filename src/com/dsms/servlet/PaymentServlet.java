@@ -41,15 +41,16 @@ public class PaymentServlet extends HttpServlet {
 			paymentDetails.setEmail(request.getParameter("contactEmail"));
 			
 			TransactionVO transVo = new TransactionVO();
-			transVo.setTransactionId("Tx006");
-			transVo.setLearnerId(1);
+			transVo.setTransactionId("Tx009");
+			transVo.setLearnerId(UtilConstants.getLearnerId());
 			transVo.setTransactionStatus("Processing");
 			transVo.setCardNumber(cardLastFour);
 			transVo.setAmount(request.getParameter("courseFee"));
 			
 			boolean insertStatus = dbOper.insertCardDetails(paymentDetails, transVo);
+			boolean insertLearnerStatus = dbOper.insertLearnerDataAfterPayment(Float.parseFloat(transVo.getAmount()));
 			
-			if(insertStatus){
+			if(insertStatus && insertLearnerStatus){
 				RequestDispatcher rd = request.getRequestDispatcher("success.jsp");
 				rd.forward(request, response);
 			}

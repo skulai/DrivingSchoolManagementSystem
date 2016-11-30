@@ -43,7 +43,7 @@
 				<td><select name="dropDown">
 						<option value="select">--select--</option>
 						<c:forEach items="${courseList}" var="course">
-							<option value="${course}">${course.courseName}-${course.instructorName}-${course.startDate}</option>
+							<option value="${course}">${course.courseName}-${course.instructorName}-${course.startDate}-${course.slot}</option>
 						</c:forEach>
 				</select></td>
 				<td>Please Select Offer:</td>

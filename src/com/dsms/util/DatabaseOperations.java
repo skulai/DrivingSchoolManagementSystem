@@ -3,6 +3,7 @@
  */
 package com.dsms.util;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -194,6 +195,51 @@ public class DatabaseOperations {
 			learnerId = result.getInt("l_id");
 		}
 		return learnerId;
+	}
+	
+	public boolean insertLearnerDataAfterPayment(float amountPaid) {
+		Connection dbConnection =null;
+		PreparedStatement preparedStatement = null;
+		boolean status = false;
+		try {
+			BigDecimal amount = BigDecimal.valueOf(amountPaid);
+			dbConnection = createDbConnection();
+			String learnerDetails = "update learner set l_grade=?, l_choice_of_instructor=?, s_id=?, c_id=?, o_id=?, l_amount_paid=?"+" where l_id=?";
+			preparedStatement = dbConnection.prepareStatement(learnerDetails);
+			preparedStatement.setString(1, "I");
+			preparedStatement.setInt(2, UtilConstants.getLearnerInstructor());
+			preparedStatement.setInt(3, UtilConstants.getScheduleId());
+			preparedStatement.setString(4, UtilConstants.getCourseId());
+			preparedStatement.setString(5, UtilConstants.getOfferId());
+			preparedStatement.setBigDecimal(6, amount);
+			preparedStatement.setInt(7, UtilConstants.getLearnerId());
+			preparedStatement.executeUpdate();
+			status = true;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return status;
+	}
+	
+	public void getDetailsfromSlot(String schedule, int discount) throws SQLException, ClassNotFoundException{
+		Connection dbConnection = createDbConnection();
+		Statement stmt = dbConnection.createStatement();
+		Statement stmt1 = dbConnection.createStatement();
+		String querySchedule = "select s_id, i_id, c_id from schedule where s_time="+"'"+schedule+"'"+";";
+		String queryOffer = "select o_id from offers where o_discount="+discount;
+		ResultSet result = stmt.executeQuery(querySchedule);
+		ResultSet result1 = stmt1.executeQuery(queryOffer);
+		while (result.next()) {
+			UtilConstants.setScheduleId(result.getInt("s_id"));
+			UtilConstants.setLearnerInstructor(result.getInt("i_id"));
+			UtilConstants.setCourseId(result.getString("c_id"));
+		}
+		
+		while (result1.next()) {
+			UtilConstants.setOfferId(result1.getString("o_id"));
+		}
 	}
 	
 	private static float getInstructorRating(int instructorId) throws ClassNotFoundException, SQLException{

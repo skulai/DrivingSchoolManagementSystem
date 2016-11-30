@@ -63,10 +63,12 @@ public class LearnerAvailableCoursesVO {
 	public void setRating(String rating) {
 		this.rating = rating;
 	}
+	
 	@Override
 	public String toString() {
 		return "courseName=" + courseName + ", instructorName=" + instructorName
-				+ ", startDate=" + startDate + ", courseDuration=" + courseDuration + ", courseFee=" + courseFee;
+				+ ", startDate=" + startDate + ", courseDuration=" + courseDuration + ", courseFee=" + courseFee
+				+ ", endDate=" + endDate + ", slot=" + slot + ", rating=" + rating;
 	}
 	
 }

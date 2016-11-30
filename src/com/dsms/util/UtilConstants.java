@@ -28,5 +28,34 @@ public class UtilConstants {
 	public static void setLearnerId(int learnerId) {
 		UtilConstants.learnerId = learnerId;
 	}
+	
+	private static int learnerInstructor;
+	private static int scheduleId;
+	private static String courseId;
+	private static String offerId;
+	public static int getLearnerInstructor() {
+		return learnerInstructor;
+	}
+	public static void setLearnerInstructor(int learnerInstructor) {
+		UtilConstants.learnerInstructor = learnerInstructor;
+	}
+	public static int getScheduleId() {
+		return scheduleId;
+	}
+	public static void setScheduleId(int scheduleId) {
+		UtilConstants.scheduleId = scheduleId;
+	}
+	public static String getCourseId() {
+		return courseId;
+	}
+	public static void setCourseId(String courseId) {
+		UtilConstants.courseId = courseId;
+	}
+	public static String getOfferId() {
+		return offerId;
+	}
+	public static void setOfferId(String offerId) {
+		UtilConstants.offerId = offerId;
+	}
 }
 
