@@ -11,6 +11,7 @@ import com.dsms.entity.LearnerAvailableCoursesVO;
 import com.dsms.entity.LearnerCourseScheduleVO;
 import com.dsms.entity.OffersVO;
 import com.dsms.util.DatabaseOperations;
+import com.dsms.util.UtilConstants;
 
 import javax.servlet.*;
 import java.sql.*;
@@ -36,6 +37,7 @@ public class LoginServlet extends HttpServlet {
 		// creating connection with the database
 		if (username != null && password != null) {
 			learner_id = Authenticator.authenticateLearner(username, password);
+			UtilConstants.setLearnerId(learner_id);
 			if (learner_id != null) {
 				userObject = FetchUserObject.getUserObject(username);
 				if (userObject != null) {

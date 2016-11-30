@@ -20,5 +20,13 @@ public class UtilConstants {
 	public static void setBalance(double balance) {
 		UtilConstants.balance = balance;
 	}
+	
+	private static int learnerId;
+	public static int getLearnerId() {
+		return learnerId;
+	}
+	public static void setLearnerId(int learnerId) {
+		UtilConstants.learnerId = learnerId;
+	}
 }
 

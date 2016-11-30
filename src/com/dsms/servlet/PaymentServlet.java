@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.dsms.entity.LearnerPaymentDetailsVO;
 import com.dsms.entity.TransactionVO;
 import com.dsms.util.DatabaseOperations;
+import com.dsms.util.UtilConstants;
 
 /**
  * @author Rahul
@@ -27,8 +28,9 @@ public class PaymentServlet extends HttpServlet {
 		try {
 			String cardNumber = request.getParameter("CCNo");
 			String cardLastFour = cardNumber.substring(cardNumber.length()-4);
+			DatabaseOperations dbOper = new DatabaseOperations();
 			LearnerPaymentDetailsVO paymentDetails = new LearnerPaymentDetailsVO();
-			paymentDetails.setLearnerId(1);
+			paymentDetails.setLearnerId(UtilConstants.getLearnerId());
 			paymentDetails.setPayeeFirstName(request.getParameter("firstName"));
 			paymentDetails.setPayeeLastName(request.getParameter("lastName"));
 			paymentDetails.setPayeeAddress(request.getParameter("address"));
@@ -39,13 +41,12 @@ public class PaymentServlet extends HttpServlet {
 			paymentDetails.setEmail(request.getParameter("contactEmail"));
 			
 			TransactionVO transVo = new TransactionVO();
-			transVo.setTransactionId("Tx001");
+			transVo.setTransactionId("Tx006");
 			transVo.setLearnerId(1);
 			transVo.setTransactionStatus("Processing");
 			transVo.setCardNumber(cardLastFour);
 			transVo.setAmount(request.getParameter("courseFee"));
 			
-			DatabaseOperations dbOper = new DatabaseOperations();
 			boolean insertStatus = dbOper.insertCardDetails(paymentDetails, transVo);
 			
 			if(insertStatus){
@@ -53,7 +54,7 @@ public class PaymentServlet extends HttpServlet {
 				rd.forward(request, response);
 			}
 			else {
-				RequestDispatcher rd = request.getRequestDispatcher("fail.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("failure.jsp");
 				rd.forward(request, response);
 			}
 			

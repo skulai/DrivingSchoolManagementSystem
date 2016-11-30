@@ -9,23 +9,6 @@
 </head>
 <body>
 	<form method="post" action="payment">
-
-		<!-- required parameters CH_uId or CH_toEmail -->
-		<input type="hidden" name="CH_uId" value="3487961">
-
-		<!-- optional parameters CH_successPage and CH_errorPage -->
-		<!-- <input type="hidden" name="CH_successPage"
-			value="http://www.yourserver.com/success"> <input
-			type="hidden" name="CH_errorPage"
-			value="http://www.yourserver.com/error">
-
-		other optional parameters CH_fromName, CH_fromEmail CH_subject
-		<input type="hidden" name="CH_fromName"
-			value="CryptoHeaven Secure Form"> <input type="hidden"
-			name="CH_fromEmail" value="my-forms@cryptoheaven.com"> <input
-			type="hidden" name="CH_subject" value="Your Site Payment Form"> -->
-
-		<!-- your regular form follows -->
 		<table width=518 border="0" cellpadding="0" cellspacing="0"
 			bgcolor="#FFFFFF">
 			<tr bgcolor="#E5E5E5">
