@@ -24,14 +24,14 @@
 		</tr>
 			<c:forEach items="${courseList}" var="course">
 				<tr>
-					<td>${course.courseName}</td>
-					<td>${course.instructorName}</td>
-					<td>${course.startDate}</td>
-					<td>${course.courseDuration}</td>
-					<td>${course.endDate}</td>
-					<td>${course.courseFee}</td>
-					<td>${course.slot}</td>
-					<td>${course.rating}</td>
+					<td align="center">${course.courseName}</td>
+					<td align="center">${course.instructorName}</td>
+					<td align="center">${course.startDate}</td>
+					<td align="center">${course.courseDuration}</td>
+					<td align="center">${course.endDate}</td>
+					<td align="center">${course.courseFee}</td>
+					<td align="center">${course.slot}</td>
+					<td align="center">${course.rating}</td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -54,10 +54,8 @@
 						</c:forEach>
 				</select></td>
 			</tr>
-			<tr align="right">
-				<td align="right"><input type="submit" value="Pay Now!"></td>
-			</tr>
 		</table>
+		<h4 align="center"><input type="submit" value="Pay Now!"></h4>
 	</form>
 	<br>
 	<br>
@@ -65,14 +63,22 @@
 	<h3 align="center">Your Current Schedule</h3>
 	<form action="learnerlogincontroller" method="get">
 		<table border="2" align="center" cellpadding="5" height="50px">
+		<tr>
+			<td>Course ID</td>
+			<td>Course Name</td>
+			<td>Instructor Name</td>
+			<td>Start Date</td>
+			<td>End Date</td>
+			<td>Time</td>
+		</tr>
 			<c:forEach items="${courseSchedule}" var="schedule">
 				<tr>
-					<td>${schedule.courseId}</td>
-					<td>${schedule.courseName}</td>
-					<td>${schedule.instructorName}</td>
-					<td>${schedule.startDate}</td>
-					<td>${schedule.endDate}</td>
-					<td>${schedule.scheduleTime}</td>
+					<td align="center">${schedule.courseId}</td>
+					<td align="center">${schedule.courseName}</td>
+					<td align="center">${schedule.instructorName}</td>
+					<td align="center">${schedule.startDate}</td>
+					<td align="center">${schedule.endDate}</td>
+					<td align="center">${schedule.scheduleTime}</td>
 				</tr>
 			</c:forEach>
 		</table>
