@@ -3,10 +3,12 @@ package com.dsms.servlet;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+import com.dsms.util.CryptWithMD5;
+
 import java.sql.*;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
@@ -24,7 +26,6 @@ public class LearnerRegister extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
 	
         String name = request.getParameter("l_name");
         String contact=request.getParameter("contact");
@@ -33,7 +34,9 @@ public class LearnerRegister extends HttpServlet {
         String dob=request.getParameter("dob");
         String gender=request.getParameter("gender");
         String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String password0 = request.getParameter("password");
+        
+        String password = CryptWithMD5.crypt(password0);
         
         RequestDispatcher rd = null;
         PreparedStatement ps = null;
@@ -134,12 +137,12 @@ public class LearnerRegister extends HttpServlet {
 
 		Statement stmt = null;
 		ResultSet rs = null;
-		  Connection  conn = null;
+		  //Connection  conn = null;
 		  Integer db_count = -1;
 		try {
 			
 			Connection con = ConnectionManager.getConnection();
-		    stmt = conn.createStatement();
+		    stmt = con.createStatement();
 		    rs = stmt.executeQuery("select count(*) as count from learner where l_username='"+userId+"'");
 
 		    // or alternatively, if you don't know ahead of time that

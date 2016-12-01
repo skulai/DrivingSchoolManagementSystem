@@ -10,6 +10,7 @@ import javax.servlet.http.*;
 import com.dsms.entity.LearnerAvailableCoursesVO;
 import com.dsms.entity.LearnerCourseScheduleVO;
 import com.dsms.entity.OffersVO;
+import com.dsms.util.CryptWithMD5;
 import com.dsms.util.DatabaseOperations;
 import com.dsms.util.UtilConstants;
 
@@ -26,7 +27,9 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html");
 		String username = request.getParameter("Username");
-		String password = request.getParameter("password");
+		String password0 = request.getParameter("password");
+		String password = CryptWithMD5.crypt(password0);
+
 		System.out.println("Username is" + username);
 		System.out.println("Password is" + password);
 
@@ -37,8 +40,17 @@ public class LoginServlet extends HttpServlet {
 		// creating connection with the database
 		if (username != null && password != null) {
 			learner_id = Authenticator.authenticateLearner(username, password);
-			UtilConstants.setLearnerId(learner_id);
+			System.out.println("LearnerId"+learner_id);
+			
+			
 			if (learner_id != null) {
+				UtilConstants.setLearnerId(learner_id);
+				
+				///setting session
+				HttpSession session = request.getSession();
+				session.setAttribute("userType", "learner");
+				session.setAttribute("l_id", learner_id);
+				System.out.println("Valid!!");
 				userObject = FetchUserObject.getUserObject(username);
 				if (userObject != null) {
 					successFlag = true;

@@ -50,12 +50,12 @@
     ==========================================-->
 	<a name="loginsignin"></a>
 
-	<div class="section section-signin text-center">
+	<div class="section section-signin text-center" >
 		<br> <br> <br> <br> <br>
 		<div class="row">
 			<div
 				class="panel panel-default col-sm-6 center col-md-offset-2 col-md-8"
-				style="max-width: 400px; margin-left: auto; margin-right: auto;">
+				style="max-width: 400px; margin-left: auto; margin-right: auto;" >
 				<div class="panel-body" role="tabpanel">
 
 					<ul class="nav nav-pills">

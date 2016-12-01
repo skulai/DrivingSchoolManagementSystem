@@ -10,6 +10,7 @@ public class Authenticator {
  
 	public String authenticate(String username, String password) {
 	try{
+		System.out.println("useername"+username+"Password for processing:"+password);
 		Connection con = ConnectionManager.getConnection();
 		Statement st= con.createStatement(); 
 		ResultSet rs=st.executeQuery("select * from instructor where i_username='"+username+"' and i_password ='"+password+"'"); 
@@ -32,7 +33,7 @@ public class Authenticator {
 		try{
 		 con = ConnectionManager.getConnection();
 		 st= con.createStatement(); 
-		 rs=st.executeQuery("select * from learner where l_username='"+username+"' and l_password ='"+password+"'"); 
+		 rs=st.executeQuery("select * from learner where l_username='"+username+"' and l_password ='"+password+"' and l_status='E'"); 
 		while (rs.next()) {
 			return rs.getInt("l_id");
 		}

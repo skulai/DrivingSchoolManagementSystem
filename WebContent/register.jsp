@@ -4,6 +4,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registration</title>
+        <link rel='stylesheet' href='css/bootstrap.css' />
+<link rel='stylesheet' href='css/bootstrap-theme.css' />
+<script src="js/jquery-1.12.1.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/angular.js"></script>   
     </head>
     <style type="text/css">
 .blink_text {
@@ -148,8 +153,37 @@ animation:1s blinker linear infinite;
 		}
 </script>
 <body>
-        <form  name="registerform" method="post" action="LearnerRegister" onsubmit="return validateForm();">
-       
+
+<nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">DSMS</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a ref="#home" class="smoothScroll">Learners Registration</a></li>
+			</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+	</nav>
+	
+	<br>
+	<br>
+	<br>
+	<br>
+        <form  name="registerform" method="post" action="LearnerRegister" onsubmit="return validateForm(); " class="col-sm-3 center col-md-offset-2 col-md-4">
+        <div class="form-group" class="col-sm-3 center col-md-offset-2 col-md-4">
             <center>
             <br><br>
             <%
@@ -163,7 +197,7 @@ animation:1s blinker linear infinite;
  			}
  			request.getSession().removeAttribute("userExists");
  			%>
-            <table border="1" width="30%" cellpadding="5">
+            <table border="1" width="30%" cellpadding="5" class="table" class="col-sm-3 center col-md-offset-2 col-md-4">
                 <thead>
                     <tr>
                         <th colspan="2">Enter Learner Information Here</th>
@@ -183,29 +217,29 @@ animation:1s blinker linear infinite;
                     
                     <tr>
                         <td>Name</td>
-                        <td><input type="text" name="l_name" value="" /></td>
+                        <td><input type="text" name="l_name" value="" class="form-control" /></td>
                     </tr>
                       
                     <tr>
                         <td>Phone Number</td>
-                        <td><input type="text" name="contact" value="" /></td>
+                        <td><input type="text" name="contact" value="" class="form-control" /></td>
                     </tr>
                      <tr>
                         <td>Email</td>
-                        <td><input type="text" name="email" value="" /></td>
+                        <td><input type="email" name="email" value="" class="form-control"/></td>
                     </tr>
                     <tr>
                         <td>Address</td>
-                        <td><input type="text" name="address" value="" /></td>
+                        <td><input type="text" name="address" value="" class="form-control"/></td>
                     </tr>
                     <tr>
-                        <td>Date of Birth</td>
-                        <td><input type="text" name="dob" value="" /></td>
+                        <td>Date of Birth(mm/dd/yyyy)</td>
+                        <td><input type="text" name="dob" value="" class="form-control"/></td>
                     </tr>
                      <tr>
                         <td>Gender</td>
                         <td>
-                        <select name="gender">
+                        <select name="gender" class="form-control">
     						<option value="male">Male</option>
 							<option value="female">Female</option>
 						 </select>
@@ -213,14 +247,14 @@ animation:1s blinker linear infinite;
                     </tr>
                     <tr>
                         <td>User Name</td>
-                        <td><input type="text" name="username" value="" /></td>
+                        <td><input type="text" name="username" value=""  class="form-control"/></td>
                     </tr>
                     <tr>
                         <td>Password</td>
-                        <td><input type="password" name="password" value="" /></td>
+                        <td><input type="password" name="password" value="" class="form-control"/></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="submit" value="Submit"/></td>
+                        <td colspan="2"><input type="submit" value="Submit" class="btn btn-success"/></td>
                       
                     </tr>
                     <tr>
@@ -229,6 +263,7 @@ animation:1s blinker linear infinite;
                 </tbody>
             </table>
             </center>
+            </div>
         </form>
     </body>
 </html>

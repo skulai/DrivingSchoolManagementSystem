@@ -4,10 +4,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.dsms.util.CryptWithMD5;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -87,12 +88,12 @@ public class AdminLogin extends HttpServlet {
 		try {
 			json = (JSONObject) parser.parse(sb.toString());
 			name = (String) json.get("username");
-			password =  (String) json.get("password");
+			String password0 =  (String) json.get("password");
+			password = CryptWithMD5.crypt(password0);
 			System.out.println(name);
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
 				//creating connection with the database 
-
 
 				Connection con = ConnectionManager.getConnection();
 				PreparedStatement pst = con.prepareStatement("Select a_name,a_password from admin where a_name=? and a_password=?");

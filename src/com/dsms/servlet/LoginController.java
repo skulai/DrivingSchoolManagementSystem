@@ -8,6 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.dsms.util.CryptWithMD5;
  
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -20,10 +22,11 @@ public class LoginController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
  
 		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		String password0 = request.getParameter("password");
 		RequestDispatcher rd = null;
  
 		Authenticator authenticator = new Authenticator();
+		String password = CryptWithMD5.crypt(password0);
 		String result = authenticator.authenticate(username, password);
 		if (result.equals("failure")) {
 			rd = request.getRequestDispatcher("/i_error.jsp");

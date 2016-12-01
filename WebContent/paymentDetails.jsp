@@ -6,6 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <title>Payment Information</title>
+<link rel='stylesheet' href='css/bootstrap.css' />
+<link rel='stylesheet' href='css/bootstrap-theme.css' />
+<script src="js/jquery-1.12.1.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/angular.js"></script>   
 </head>
 <body>
 	<form method="post" action="payment">
