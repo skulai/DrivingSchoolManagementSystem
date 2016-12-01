@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dsms.entity.LearnerAvailableCoursesVO;
 import com.dsms.entity.LearnerCourseScheduleVO;
 import com.dsms.util.DatabaseOperations;
 
